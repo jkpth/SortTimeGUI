@@ -107,6 +107,94 @@ public class SortShow extends JPanel {
 		}
 		
 	///////////////////////////////////////////////////////////////////////////////////
+
+		//The bubbleSort method
+		public void BubbleSort(){
+			//getting the date and time when the bubble sort starts
+			Calendar start = Calendar.getInstance();
+
+
+			//code here
+
+
+			paintComponent(this.getGraphics());
+
+			delay(10);
+
+			//getting the date and time when the bubble sort ends
+			Calendar end = Calendar.getInstance();
+			//getting the time it took for the bubble sort to execute
+			//subtracting the end time with the start time
+			SortGUI.bubbleTime = end.getTime().getTime() - start.getTime().getTime();
+		}
+
+	///////////////////////////////////////////////////////////////////////////////////
+
+		//The quickSort method
+		public void QuickSort(){
+			//getting the date and time when the quick sort starts
+			Calendar start = Calendar.getInstance();
+
+
+			//code here
+
+
+			paintComponent(this.getGraphics());
+
+			delay(10);
+
+			//getting the date and time when the quick sort ends
+			Calendar end = Calendar.getInstance();
+			//getting the time it took for the quick sort to execute
+			//subtracting the end time with the start time
+			SortGUI.quickTime = end.getTime().getTime() - start.getTime().getTime();
+		}
+
+	///////////////////////////////////////////////////////////////////////////////////
+
+		//The insertionSort method
+		public void InsertionSort(){
+			//getting the date and time when the insertion sort starts
+			Calendar start = Calendar.getInstance();
+
+
+			//code here
+
+
+			paintComponent(this.getGraphics());
+
+			delay(10);
+
+			//getting the date and time when the insertion sort ends
+			Calendar end = Calendar.getInstance();
+			//getting the time it took for the insertion sort to execute
+			//subtracting the end time with the start time
+			SortGUI.insertionTime = end.getTime().getTime() - start.getTime().getTime();
+		}
+
+	///////////////////////////////////////////////////////////////////////////////////
+
+		//The shellSort method
+		public void ShellSort(){
+			//getting the date and time when the shell sort starts
+			Calendar start = Calendar.getInstance();
+
+
+			//code here
+
+
+			paintComponent(this.getGraphics());
+
+			delay(10);
+
+			//getting the date and time when the selection sort ends
+			Calendar end = Calendar.getInstance();
+			//getting the time it took for the selection sort to execute
+			//subtracting the end time with the start time
+			SortGUI.shellTime = end.getTime().getTime() - start.getTime().getTime();
+		}
+
+	///////////////////////////////////////////////////////////////////////////////////
 		
 		//recursive merge sort method
 		public void R_MergeSort(){
