@@ -7,6 +7,7 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -136,9 +137,7 @@ public class SortShow extends JPanel {
 				R_Merge(first, mid, last);
 
 
-				//Causing a delay for 10ms
-				paintComponent(this.getGraphics());
-				delay(10); 
+
 			}
 		}
 
@@ -149,15 +148,11 @@ public class SortShow extends JPanel {
 			int n1 = mid - first + 1;
 			int n2 = last - mid;
 
-			int L[] = new int[n1];
-			int R[] = new int[n2];
+			int[] L = new int[n1];
+			int[] R = new int[n2];
 
-			for(int i=0; i<n1; ++i){
-				L[i] = lines_lengths[first + 1];
-			}
-			for(int j=0; j<n2; ++j){
-				R[j] = lines_lengths[mid+1];
-			}
+            Arrays.fill(L, lines_lengths[first]);
+            Arrays.fill(R, lines_lengths[mid+1]);
 
 			int i=0, j=0;
 
@@ -171,6 +166,10 @@ public class SortShow extends JPanel {
 					j++;
 				}
 				k++;
+
+				//Causing a delay for 10ms
+				paintComponent(this.getGraphics());
+				delay(10);
 			}
 			while(i<n1){
 				lines_lengths[k] = L[i];
