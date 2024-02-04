@@ -125,11 +125,19 @@ public class SortShow extends JPanel {
 		
 		//recursive merge sort method
 		public void R_MergeSort(int first, int last){
+			int mid = 0;
 			if(first < last){
+				mid = (first + last)/2;
 
-				//You need to complete this part.
+				R_MergeSort(first, mid);
+
+				R_MergeSort(mid+1, last);
+
+				R_Merge(first, mid, last);
+
 
 				//Causing a delay for 10ms
+				paintComponent(this.getGraphics());
 				delay(10); 
 			}
 		}
@@ -138,6 +146,42 @@ public class SortShow extends JPanel {
 		//recursive merge sort method
 		public void R_Merge(int first, int mid, int last){
 
+			int n1 = mid - first + 1;
+			int n2 = last - mid;
+
+			int L[] = new int[n1];
+			int R[] = new int[n2];
+
+			for(int i=0; i<n1; ++i){
+				L[i] = lines_lengths[first + 1];
+			}
+			for(int j=0; j<n2; ++j){
+				R[j] = lines_lengths[mid+1];
+			}
+
+			int i=0, j=0;
+
+			int k = first;
+			while(i<n1 && j<n2){
+				if(L[i] <= R[j]){
+					lines_lengths[k] = L[i];
+					i++;
+				}else{
+					lines_lengths[k] = R[j];
+					j++;
+				}
+				k++;
+			}
+			while(i<n1){
+				lines_lengths[k] = L[i];
+				i++;
+				k++;
+			}
+			while(j<n2){
+				lines_lengths[k] = R[j];
+				j++;
+				k++;
+			}
 			//You need to complete this part.
 				
 		}
