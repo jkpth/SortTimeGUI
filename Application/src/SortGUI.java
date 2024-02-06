@@ -169,32 +169,38 @@ public class SortGUI {
 			radio_button_selection_Panel.setBorder(new javax.swing.border.TitledBorder("Sort Algorithms"));
 
 			//A Panel to hold the time_Panel and set the GridLayout
-			JPanel time_Panel = new JPanel(new GridLayout(6, 1, 3, 3));
+			JPanel time_Panel = new JPanel(new GridLayout(7, 2, 3, 2));
 			//Adding the selection_time_label to the time_Panel
 			time_Panel.add(selection_time_label);
 			//Adding the selection_time_taken to the time_Panel
 			time_Panel.add(selection_time_taken);
 			//Adding the rmerge_time_label to the time_Panel
+
+
 			time_Panel.add(rmerge_time_label); 
 			//Adding the rmerge_time_taken to the time_Panel
 			time_Panel.add(rmerge_time_taken);
 			//Adding the imerge_time_label to the time_Panel
-			time_Panel.add(new JLabel(" "));
+
 			time_Panel.add(imerge_time_label);
 			//Adding the imerge_time_taken to the time_Panel
 			time_Panel.add(imerge_time_taken);
+			
 			//Adding the bubble_time_label to the time_Panel
 			time_Panel.add(bubble_time_label);
 			//Adding the bubble_time_taken to the time_Panel
 			time_Panel.add(bubble_time_taken);
+
 			//Adding the quick_time_label to the time_Panel
 			time_Panel.add(quick_time_label);
 			//Adding the quick_time_taken to the time_Panel
 			time_Panel.add(quick_time_taken);
+
 			//Adding the insertion_time_label to the time_Panel
 			time_Panel.add(insertion_time_label);
 			//Adding the insertion_time_taken to the time_Panel
 			time_Panel.add(insertion_time_taken);
+
 			//Adding the shell_time_label to the time_Panel
 			time_Panel.add(shell_time_label);
 			//Adding the shell_time_taken to the time_Panel
