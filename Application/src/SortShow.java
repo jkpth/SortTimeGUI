@@ -113,13 +113,25 @@ public class SortShow extends JPanel {
 			//getting the date and time when the bubble sort starts
 			Calendar start = Calendar.getInstance();
 
+			boolean swapped;
+			for (int i = 0; i < total_number_of_lines - 1; i++) {
+				swapped = false;
+				for (int j = 0; j < total_number_of_lines - i - 1; j++) {
+					if (lines_lengths[j] > lines_lengths[j + 1]) {
+						int temp = lines_lengths[j];
+						lines_lengths[j] = lines_lengths[j + 1];
+						lines_lengths[j + 1] = temp;
+						swapped = true;
+					}
+				}
 
-			//code here
-
-
-			paintComponent(this.getGraphics());
-
-			delay(10);
+				// show updated graph
+				paintComponent(this.getGraphics());
+				delay(10);
+				
+				if (!swapped)
+					break;
+			}
 
 			//getting the date and time when the bubble sort ends
 			Calendar end = Calendar.getInstance();
@@ -135,19 +147,38 @@ public class SortShow extends JPanel {
 			//getting the date and time when the quick sort starts
 			Calendar start = Calendar.getInstance();
 
-
-			//code here
-
-
-			paintComponent(this.getGraphics());
-
-			delay(10);
+			Quick(0, total_number_of_lines - 1);
 
 			//getting the date and time when the quick sort ends
-			Calendar end = Calendar.getInstance();
-			//getting the time it took for the quick sort to execute
 			//subtracting the end time with the start time
+			Calendar end = Calendar.getInstance();
 			SortGUI.quickTime = end.getTime().getTime() - start.getTime().getTime();
+		}
+		
+		public void Quick(int low, int high) {
+			if (low < high) {
+				int pivot = partition(low, high);
+				Quick(low, pivot - 1);
+				Quick(pivot + 1, high);
+			}
+		}
+
+		private int partition(int low, int high) {
+			int pivot = lines_lengths[high];
+			int i = (low - 1);
+			for (int j = low; j < high; j++) {
+				if (lines_lengths[j] < pivot) {
+					i++;
+					swap(i, j);
+				}
+			}
+			swap(i + 1 , high);
+
+			// shou updated graph
+			paintComponent(this.getGraphics());
+			delay(10);
+
+			return i + 1;
 		}
 
 	///////////////////////////////////////////////////////////////////////////////////
