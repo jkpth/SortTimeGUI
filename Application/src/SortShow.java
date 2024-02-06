@@ -179,8 +179,17 @@ public class SortShow extends JPanel {
 			//getting the date and time when the shell sort starts
 			Calendar start = Calendar.getInstance();
 
+			int n = total_number_of_lines;
+			for(int space = n/2 ; space > 0; space = space/2){
+				for(int begin = 0; begin < space; begin++){
+					incrementalInsertionSort(begin, total_number_of_lines-1, space);
 
-			//code here
+					paintComponent(this.getGraphics());
+
+					delay(10);
+				}
+			}
+
 
 
 			paintComponent(this.getGraphics());
@@ -192,6 +201,17 @@ public class SortShow extends JPanel {
 			//getting the time it took for the selection sort to execute
 			//subtracting the end time with the start time
 			SortGUI.shellTime = end.getTime().getTime() - start.getTime().getTime();
+		}
+
+		public void incrementalInsertionSort(int first, int last, int space){
+			int unsorted, index, firstUnsorted;
+			for(unsorted = first + space; unsorted <= last; unsorted = unsorted+space){
+				firstUnsorted = lines_lengths[unsorted];
+				for(index = unsorted - space; (index >= first) && (firstUnsorted < lines_lengths[index]); index = index - space){
+					lines_lengths[index + space] = lines_lengths[index];
+				}
+				lines_lengths[index +  space] = firstUnsorted;
+			}
 		}
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -220,20 +240,23 @@ public class SortShow extends JPanel {
 				R_Merge(mid+1, last);
 				R_MergeHalves(first, mid, last);
 
+				// Periodically update GUI
 				paintComponent(this.getGraphics());
 				delay(10); 
 			}
 		}
 
-		
 		//recursive merge sort method
 		public void R_MergeHalves(int first, int mid, int last){
+			// Create a temporary array to avoid overwriting original array
 			int[] temp = new int[last - first + 1];
 
-			int i = first;
-			int j = mid + 1;
-			int k = 0;
+			// Initialize pointers
+			int i = first; 		// Start of the first half
+			int j = mid + 1;	// Start of the second half
+			int k = 0;			// Index of temp array
 
+			// Merge the two halves into the temp array
 			while(i <= mid && j <= last){
 				if(lines_lengths[i] <= lines_lengths[j]){
 					temp[k++] = lines_lengths[i++];
@@ -241,18 +264,18 @@ public class SortShow extends JPanel {
 					temp[k++] = lines_lengths[j++];
 				}
 			}
+			// Copy any elements left in first half
 			while(i <= mid){
 				temp[k++] = lines_lengths[i++];
 			}
-
+			// Copy any elements left in the second half
 			while(j <= last){
 				temp[k++] = lines_lengths[j++];
 			}
-
-			for(k = 0; k < temp.length; k++){
-				lines_lengths[first + k] =  temp[k];
+			// Copy temp array into original
+			for(k = 0; k < temp.length; k++) {
+				lines_lengths[first + k] = temp[k];
 			}
-				
 		}
 		
 		//
