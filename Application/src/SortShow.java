@@ -221,12 +221,6 @@ public class SortShow extends JPanel {
 				}
 			}
 
-
-
-			paintComponent(this.getGraphics());
-
-			delay(10);
-
 			//getting the date and time when the selection sort ends
 			Calendar end = Calendar.getInstance();
 			//getting the time it took for the selection sort to execute
