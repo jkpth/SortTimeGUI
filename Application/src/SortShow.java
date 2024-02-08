@@ -174,7 +174,7 @@ public class SortShow extends JPanel {
 			}
 			swap(i + 1 , high);
 
-			// shou updated graph
+			// show updated graph
 			paintComponent(this.getGraphics());
 			delay(10);
 
