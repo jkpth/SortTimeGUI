@@ -185,21 +185,31 @@ public class SortShow extends JPanel {
 
 		//The insertionSort method
 		public void InsertionSort(){
-			//getting the date and time when the insertion sort starts
+			// Getting the date and time when the insertion sort starts
 			Calendar start = Calendar.getInstance();
 
+			for (int i = 1; i < total_number_of_lines; i++) {
+				int key = lines_lengths[i];
+				int j = i - 1;
 
-			//code here
+				// Shift elements greater than the key to the right
+				while (j >= 0 && lines_lengths[j] > key) {
+					lines_lengths[j + 1] = lines_lengths[j];
+					j = j - 1;
+				}
+				lines_lengths[j + 1] = key;
 
+				// Update the graph to visualize the sorting process
+				paintComponent(this.getGraphics());
 
-			paintComponent(this.getGraphics());
+				// Delay for visualization purposes
+				delay(10);
+			}
 
-			delay(10);
-
-			//getting the date and time when the insertion sort ends
+			// Getting the date and time when the insertion sort ends
 			Calendar end = Calendar.getInstance();
-			//getting the time it took for the insertion sort to execute
-			//subtracting the end time with the start time
+			// Getting the time it took for the insertion sort to execute
+			// Subtracting the end time with the start time
 			SortGUI.insertionTime = end.getTime().getTime() - start.getTime().getTime();
 		}
 
