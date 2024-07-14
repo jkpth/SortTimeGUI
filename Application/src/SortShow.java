@@ -4,7 +4,7 @@
  */
 
 //importing the libraries that will be needed in this program
-//1234567
+//12345678
 import javax.swing.*;
 import java.awt.*;
 import java.util.Calendar;
